@@ -1,9 +1,63 @@
 .Pokemon-Details{
- background-color: white;
-    width: 300px;
-    border: 25px solid #5975a0;
-    padding: 25px;
-    margin: 25px;
+  float: left;
+ background-color: #b6c3d8;
+    width: 200px;
+    border: 5px solid #5975a0;
+        border-radius: 25px;
+    margin-top: 50px;
+    padding: 30px;
+    margin-left: -745px;
+    font-family: cursive;
+
+}
+
+div.scroll {
+    background-color: #b6c3d8;
+    width: 650px;
+    height: 50px;
+    overflow: scroll;
+}
+
+.scroll-size{
+ 
+    border: 5px solid #5975a0;
+float: right;
+ background-color: #b6c3d8;
+ border: 5px solid #5975a0;
+  
+    width: 600px;
+    margin-top: -280px;
+    margin-right: -282px;
+     height: 70PX;
+        padding: 35px;
+    font-family: cursive;
+}
+
+
+.description{
+align-items: center;
+
+}
+
+hr{
+color: #5975a0;
+
+}
+
+.radius{
+border-radius: 12px;
+}
+.comment{
+float: right;
+ background-color: #b6c3d8;
+ border: 5px solid #5975a0;
+     border-radius: 25px;
+    width: 650px;
+    margin-top: 180px;
+     height: 50PX;
+        padding: 35px;
+margin-right: -282px;
+    font-family: cursive;
 
 }
 
@@ -33,8 +87,8 @@
 .Search{
 margin-top: -30px;
 float: right;
-margin-right: 200px;
-
+margin-right: 90px;
+font-family: cursive;
 
 }
 

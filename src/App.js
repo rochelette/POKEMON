@@ -3,18 +3,19 @@ import logo from './logo.svg';
 import './App.css';
 import Request from 'superagent';
 
-
 var PokemonDetails=React.createClass(
 { 
   render (){
     return(
       <div className="Pokemon-Details">
-         <p> POKEMON ID:{this.props.id}</p>
-      <p> NAME:{this.props.name}</p>
-      <img src={this.props.pic}/>
-        <p> BASE EXPERIENCE:{this.props.base_experience}</p>
-       <p> HEIGHT:{this.props.height}</p>
-        <p> WEIGHT:{this.props.weight}</p>
+        <hr/>
+       <img src={this.props.sprite}/>
+        <hr/>
+         <p> Pokemon Id:{this.props.id}</p>
+      <p> Name:{this.props.name}</p>
+        <p> Base Experience:{this.props.base_experience}</p>
+       <p> Height:{this.props.height}</p>
+        <p> Weight:{this.props.weight}</p>
       </div>);
 
   }
@@ -25,7 +26,7 @@ var App = React.createClass({
   getInitialState(){
     return{name:"",
           stat:"",
-          pic:"",
+          sprite:"",
           experience:"",
           id:"",
           weight:"",
@@ -45,7 +46,7 @@ var App = React.createClass({
       base_experience:response.body.base_experience,
        height:response.body.height,
         weight:response.body.weight,
-        pic:response.body.pic
+        sprite:response.body.sprites.front_default
     });
 
 
@@ -59,15 +60,24 @@ var App = React.createClass({
 
         <div className="App-header"> 
                   <img src={logo} className="App-logo" alt="logo" />
-                  <h1>WELCOME TO POKEMON!!!</h1>
+                  <h1>WELCOME TO OUR POKEMON WEBSITE!!!</h1>
                </div>
-  <div className = "Search">
-      <input value = {this.state.name} onChange = {this.Input} type = "text"/>
+  <div className="Search">
+      <input placeholder = "Search Pokemon" value = {this.state.name} onChange = {this.Input} type = "text"/>
       <button onClick = {this.clickSearch}> Search</button> 
-      <PokemonDetails name={this.state.stat} height={this.state.height} weight={this.state.weight} id={this.state.id}  base_experience={this.state.base_experience}pic={this.state.pic}  />
+      <PokemonDetails sprite={this.state.sprite} name={this.state.stat} height={this.state.height} weight={this.state.weight} id={this.state.id}  base_experience={this.state.base_experience}pic={this.state.pic}  />
+     
       </div>
+
+        <div className="comment">
+      <textarea  className="radius" placeholder = " Leave Comment Here...." rows="3" cols="90">
+     </textarea><br/>
+       <button  className="btn btn-primary" type="button">OK</button></div>
+       <div className=" scroll-size scroll">COMMENTS</div>
+
       </div>
-      
+
+   
     );
   }
 });
