@@ -1,0 +1,47 @@
+.Pokemon-Details{
+ background-color: white;
+    width: 300px;
+    border: 25px solid #5975a0;
+    padding: 25px;
+    margin: 25px;
+
+}
+
+.App {
+  text-align:center;
+
+}
+
+.App-logo {
+  /*animation: App-logo-spin infinite 20s linear;*/
+  height: 80px;
+  float: left;
+
+}
+
+.App-header {
+  background-color: #5975a0;
+  height: 80px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.Search{
+margin-top: -30px;
+float: right;
+margin-right: 200px;
+
+
+}
+
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
