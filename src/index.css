@@ -1,6 +1,7 @@
 body {
-  background-image:url("background.jpg") ;
-  /*background-repeat: no-repeat;*/
+  background-image:url("background3.jpg") ;
+  background-repeat: no-repeat;
+  background-color: white;
   margin: 10;
   padding: 10;
   font-family: times new roman;
