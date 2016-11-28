@@ -3,6 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import Request from 'superagent';
 
+
+
+
+
+
+
 var PokemonDetails=React.createClass(
 { 
   render (){
@@ -22,16 +28,28 @@ var PokemonDetails=React.createClass(
 
 });
 
+
+
+
+
+
+
+
+
 var App = React.createClass({
   getInitialState(){
-    return{name:"",
+    return{id:"",
+          name:"",
           stat:"",
           sprite:"",
           experience:"",
-          id:"",
           weight:"",
-          height:""}
+          height:"",
+          comment:""}
   },
+
+
+
 
   Input(name){
     this.setState({name:name.target.value});
@@ -47,12 +65,49 @@ var App = React.createClass({
        height:response.body.height,
         weight:response.body.weight,
         sprite:response.body.sprites.front_default
-    });
 
+    });
+    {this.ViewComments}
 
 });  },
 
+
+handleCommentOnChange(e){
+    this.setState({comment:e.target.value});
+  },
+
+
+handleComment(){
+
+Request.post('http://localhost:3000/api/comments')
+            .send({author:this.state.name,
+            text: this.state.comment,
+            })
+            .end(alert('Sucessfully Save!'))
+
+
+
+
+},
+
+
+ViewComments(){
+  var url = "http://localhost:3000/api/comments";
+   Request.post (url)
+   .then((n)=>{
+this.setState({
+  data : n
+})
+
+   });
+            
+
+},
+
+
+
  render() {
+
 
     return (
       
@@ -65,15 +120,21 @@ var App = React.createClass({
   <div className="Search">
       <input  placeholder = "Search Pokemon" value = {this.state.name} onChange = {this.Input} type = "text"/>
       <button onClick = {this.clickSearch}> Search</button> 
-      <PokemonDetails sprite={this.state.sprite} name={this.state.stat} height={this.state.height} weight={this.state.weight} id={this.state.id}  base_experience={this.state.base_experience}pic={this.state.pic}  />
+      <PokemonDetails sprite={this.state.sprite} name={this.state.stat} height={this.state.height} weight={this.state.weight} id={this.state.id}  base_experience={this.state.base_experience}pic={this.state.pic} 
+    />
      
       </div>
 
+
+
         <div className="comment">
-      <textarea  className="radius" placeholder = " Leave Comment Here...." rows="6" cols="110">
+
+      <textarea  className="radius" placeholder = " Leave Comment Here...." rows="6" cols="110" onChange = {this.handleCommentOnChange} >
      </textarea><br/>
-       <button  className="btn btn-primary" type="button">OK</button></div>
-       <div className=" scroll-size scroll">COMMENTS</div>
+       <button  className="btn btn-primary" type="button" onClick = {this.handleComment}  >OK</button></div>
+       <div className=" scroll-size scroll"></div>
+       <PokemonDetails comment={this.state.comments}/>
+     
 
       </div>
 
