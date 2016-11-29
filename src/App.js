@@ -4,19 +4,14 @@ import './App.css';
 import Request from 'superagent';
 
 
-
-
-
-
-
 var PokemonDetails=React.createClass(
 { 
   render (){
     return(
       <div className="Pokemon-Details">
-        <hr/>
+        <hr/><hr/>
        <img src={this.props.sprite}/>
-        <hr/>
+        <hr/><hr/>
          <p> Pokemon Id:{this.props.id}</p>
       <p> Name:{this.props.name}</p>
         <p> Base Experience:{this.props.base_experience}</p>
@@ -30,12 +25,6 @@ var PokemonDetails=React.createClass(
 
 
 
-
-
-
-
-
-
 var App = React.createClass({
   getInitialState(){
     return{id:"",
@@ -45,7 +34,8 @@ var App = React.createClass({
           experience:"",
           weight:"",
           height:"",
-          comment:""}
+          comment:"",
+          data:""}
   },
 
 
@@ -67,7 +57,7 @@ var App = React.createClass({
         sprite:response.body.sprites.front_default
 
     });
-    {this.ViewComments}
+    this.ViewComments();
 
 });  },
 
@@ -83,10 +73,8 @@ Request.post('http://localhost:3000/api/comments')
             .send({author:this.state.name,
             text: this.state.comment,
             })
-            .end(alert('Sucessfully Save!'))
-
-
-
+            .end(alert('Sucessfully Save!'))               
+     
 
 },
 
@@ -108,6 +96,10 @@ this.setState({
 
  render() {
 
+  var comment;
+ {this.state.data === ""? null :comment = this.state.data.body
+                      .filter((data)=> {return data.author === this.state.name})
+                      .map((n)=>{return <p>{n.text}</p>})}
 
     return (
       
@@ -115,32 +107,30 @@ this.setState({
 
         <div className="App-header"> 
                   <img src={logo} className="App-logo" alt="logo" />
-                  <h1>WELCOME TO OUR WEBSITE!</h1>
+                  <h1>WELCOME TO THE POKEMON WEBSITE!!</h1>
                </div>
   <div className="Search">
       <input  placeholder = "Search Pokemon" value = {this.state.name} onChange = {this.Input} type = "text"/>
       <button onClick = {this.clickSearch}> Search</button> 
-      <PokemonDetails sprite={this.state.sprite} name={this.state.stat} height={this.state.height} weight={this.state.weight} id={this.state.id}  base_experience={this.state.base_experience}pic={this.state.pic} 
-    />
-     
+      <PokemonDetails sprite={this.state.sprite} name={this.state.stat} height={this.state.height} weight={this.state.weight} id={this.state.id}  base_experience={this.state.base_experience}/>
+
       </div>
 
+      <div  
+      className="comment">
 
-
-        <div className="comment">
-
-      <textarea  className="radius" placeholder = " Leave Comment Here...." rows="6" cols="110" onChange = {this.handleCommentOnChange} >
+      <textarea  className="radius" placeholder = " Leave Comment Here...." rows="3" cols="67" onChange = {this.handleCommentOnChange} >
      </textarea><br/>
-       <button  className="btn btn-primary" type="button" onClick = {this.handleComment}  >OK</button></div>
-       <div className=" scroll-size scroll"></div>
-       <PokemonDetails comment={this.state.comments}/>
-     
-
+       <button  className="btn btn-primary" type="button" onClick = {this.handleComment} >OK</button></div>
+       <div className=" scroll-size scroll"><hr/>Comments<hr/>{comment}</div>
+   
       </div>
+
 
    
     );
   }
 });
 
-export default App;
+
+export default App;``

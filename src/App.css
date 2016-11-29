@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
     width: 250px;
     height: 350px;
-    border: 5px solid #5975a0;
+    border: 10px solid #5975a0;
     border-radius: 25px;
     margin-top: 50px;
     padding: 30px;
@@ -24,15 +24,16 @@ div.scroll {
 
 .scroll-size{
  
-    border: 5px solid #5975a0;
+    border: 10px solid #5975a0;
  background-color: #b6c3d8;
- border: 5px solid #5975a0;
     width: 800px;
     margin-top: 250px;    
-   margin-left: 407px;
+   margin-left: 423px;
      height: 100PX;
     padding: 35px;
     font-family: cursive;
+    font-size:18px;
+    text-align: left;
 }
 
 
@@ -48,18 +49,20 @@ color: #5975a0;
 
 .radius{
 border-radius: 12px;
+font-family: cursive;
+font-size: 18px;
 }
 .comment{
 float: right;
  background-color: #b6c3d8;
- border: 5px solid #5975a0;
-
+ border: 10px solid #5975a0;
     width: 800px;
     margin-top: 25px;
      height: 100PX;
         padding: 35px;
-margin-right: -282px;
+margin-right: -291px;
     font-family: cursive;
+    
 
 }
 
@@ -69,8 +72,8 @@ margin-right: -282px;
 }
 
 .App-logo {
-  /*animation: App-logo-spin infinite 20s linear;*/
-  height: 80px;
+  animation:  App-logo  5s linear 2s infinite alternate;
+  height: 90px;
   float: left;
 
 }
