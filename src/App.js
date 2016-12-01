@@ -81,7 +81,7 @@ Request.post('http://localhost:3000/api/comments')
 
 ViewComments(){
   var url = "http://localhost:3000/api/comments";
-   Request.post (url)
+   Request.get (url)
    .then((n)=>{
 this.setState({
   data : n
@@ -92,10 +92,8 @@ this.setState({
 
 },
 
-
-
  render() {
-
+  this.ViewComments();
   var comment;
  {this.state.data === ""? null :comment = this.state.data.body
                       .filter((data)=> {return data.author === this.state.name})
@@ -109,13 +107,12 @@ this.setState({
                   <img src={logo} className="App-logo" alt="logo" />
                   <h1>WELCOME TO THE POKEMON WEBSITE!!</h1>
                </div>
-  <div className="Search">
+      <div className="Search">
       <input  placeholder = "Search Pokemon" value = {this.state.name} onChange = {this.Input} type = "text"/>
       <button onClick = {this.clickSearch}> Search</button> 
       <PokemonDetails sprite={this.state.sprite} name={this.state.stat} height={this.state.height} weight={this.state.weight} id={this.state.id}  base_experience={this.state.base_experience}/>
 
       </div>
-
       <div  
       className="comment">
 
