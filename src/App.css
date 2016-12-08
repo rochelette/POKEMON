@@ -18,7 +18,7 @@
 div.scroll {
     background-color: #b6c3d8;
     width: 800px;
-    height: 100px;
+    height: 99px;
     overflow: scroll;
 }
 
